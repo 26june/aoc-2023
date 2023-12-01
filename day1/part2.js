@@ -21,10 +21,9 @@ let totalSum = 0;
 for (let i in coordinateArray) {
   //eightwo -> should be 8 2 but regex consumes eight and left with wo
   //known as a look ahead regex
-  const string = coordinateArray[i];
-  var matches = [],
+  let matches = [],
     found;
-  while ((found = regexMatcher.exec(string))) {
+  while ((found = regexMatcher.exec(coordinateArray[i]))) {
     matches.push(found[0]);
     regexMatcher.lastIndex = found.index + 1;
   }
