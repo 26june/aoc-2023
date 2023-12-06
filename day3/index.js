@@ -5,9 +5,10 @@ input.pop();
 let total = 0;
 
 input.map((e, i) => {
-  const symbolMatcher = /[^0-9a-zA-Z.]/g;
+  const symbolMatcher = /[\*]/g;
   const numberMatcher = /\d+/g;
   while ((matched = symbolMatcher.exec(e)) != null) {
+    const data = [];
     while ((numMatchPrev = numberMatcher.exec(input[i - 1])) != null) {
       if (
         numberMatcher.lastIndex - 1 === matched.index - 1 ||
@@ -16,7 +17,7 @@ input.map((e, i) => {
         numMatchPrev.index === matched.index + 1 ||
         numMatchPrev.index === matched.index
       ) {
-        total += +numMatchPrev;
+        data.push(+numMatchPrev);
       }
     }
     while ((numMatchCurrent = numberMatcher.exec(input[i])) != null) {
@@ -27,7 +28,7 @@ input.map((e, i) => {
         numMatchCurrent.index === matched.index + 1 ||
         numMatchCurrent.index === matched.index
       ) {
-        total += +numMatchCurrent;
+        data.push(+numMatchCurrent);
       }
     }
     while ((numMatchNext = numberMatcher.exec(input[i + 1])) != null) {
@@ -38,8 +39,12 @@ input.map((e, i) => {
         numMatchNext.index === matched.index ||
         numMatchNext.index === matched.index + 1
       ) {
-        total += +numMatchNext;
+        data.push(+numMatchNext);
       }
+    }
+
+    if (data.length === 2) {
+      total += data[0] * data[1];
     }
   }
 });
