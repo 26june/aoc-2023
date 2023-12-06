@@ -1,5 +1,6 @@
 const fs = require("fs");
-const coordinateArray = fs.readFileSync("input1.txt").toString().split("\n");
+const coordinateArray = fs.readFileSync("input.txt").toString().split("\n");
+coordinateArray.pop();
 
 const wordToNumDict = {
   one: "1",
