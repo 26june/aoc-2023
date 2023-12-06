@@ -1,5 +1,6 @@
 const fs = require("fs");
-const input = fs.readFileSync("input").toString().split("\n");
+const input = fs.readFileSync("input.txt").toString().split("\n");
+// input.pop();
 
 let total = 0;
 
